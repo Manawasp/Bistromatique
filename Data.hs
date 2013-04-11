@@ -14,15 +14,11 @@ data Arith_expr
   | Sub  [Arith_expr]
   | Mod  [Arith_expr]
 
---- Lexer/Parser ---
-data Token = POP | PED | OP | Numb
-data Lexer
-  = Empty
-  | Lex Token Lexer
-
 --  !__DATA__ --
 
 --- view Data  --
+-- note : see deriving
+--
 showSign :: Sign -> String
 showSign Positive = "Positive"
 showSign Negative = "Negative"
@@ -41,6 +37,7 @@ showBigint :: Bigint -> String
 showBigint (Bigint num base sign) = "(" ++ (show num) ++ " : " ++ (show base) ++ " : " ++ (show sign) ++ ")"
 instance Show Bigint where
   show = showBigint
+---
 
 --- string to bigint ---
 --
@@ -63,5 +60,24 @@ get_num str = str
 
 bigint_of_string :: String -> Bigint
 bigint_of_string str = Bigint (get_num str) (get_base str) (get_sign str)
-
 --
+
+--- bigint to string ---
+--
+get_sign' :: Sign -> String
+get_sign' Positive = ""
+get_sign' Negative = "-"
+
+get_base' :: Base -> String
+get_base' Hexadecimal = "0x"
+get_base' Binary = "0b"
+get_base' Octal = "0"
+get_base' Decimal = ""
+
+string_of_bigint :: Bigint -> String
+string_of_bigint (Bigint numb base sign) = (get_sign' sign) ++ (get_base' base) ++ numb
+--
+
+
+
+
