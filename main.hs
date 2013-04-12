@@ -3,7 +3,7 @@
 ---- GPL version 2 or later (see http://www.gnu.org/copyleft/gpl.html)
 ----
 import System.Environment
-import Bigint
+import ArithExpr
 
 -- -- | 'main' runs the main program
 main :: IO ()

@@ -1,4 +1,4 @@
-module Bigint (bigint_of_string, string_of_bigint) where
+module Bigint (Bigint(Bigint), bigint_of_string, string_of_bigint) where
 
 --  __DATA__ --
 
@@ -6,15 +6,6 @@ module Bigint (bigint_of_string, string_of_bigint) where
 data Base = Binary | Octal | Decimal | Hexadecimal
 data Sign = Positive | Negative
 data Bigint = Bigint String Base Sign
-
---- Tree of expression ---
-data Arith_expr
-  = Number Bigint
-  | Mult [Arith_expr]
-  | Div  [Arith_expr]
-  | Add  [Arith_expr]
-  | Sub  [Arith_expr]
-  | Mod  [Arith_expr]
 
 --  !__DATA__ --
 
