@@ -5,14 +5,14 @@
 
 NAME 	= bistro
 
-SRC		= main.hs
+SRC	= main.hs
 
-RM 		= rm -f
+RM 	= rm -f
 
 all:	$(NAME)
 	
 $(NAME):
-		ghc --make $(SRC) -o $(NAME)
+	ghc --make $(SRC) -o $(NAME)
 
 clean:
 	$(RM) *.hi *.o
